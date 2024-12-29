@@ -11,7 +11,6 @@ public class User
     public string FullName { get; set; }
     public string Email { get; set; }
     public string Phone { get; set; }
-    public bool IsAdmin { get; set; }
     public ICollection<Reservation> Reservations { get; set; }
     public ICollection<Feedback> Feedbacks { get; set; }
 }
