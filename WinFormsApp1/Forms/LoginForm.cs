@@ -28,23 +28,11 @@ public partial class LoginForm : Form
 
             if (user != null)
             {
-                // Giriş yapan kullanıcıyı statik bir yapıda sakla
-                LoggedUser.loggedInUser = user;
+                LoggedUser.loggedInUser = user;  // Static bir yapıda saklıyoruz
                 MessageBox.Show("Giriş başarılı!");
-
-                this.Hide(); // Login formunu gizle
-
-                // Kullanıcının admin olup olmadığını kontrol et
-                if (user.IsAdmin)
-                {
-                    var adminForm = new AdminForm();
-                    adminForm.Show();
-                }
-                else
-                {
-                    var reservationForm = new ReservationForm();
-                    reservationForm.Show();
-                }
+                this.Hide();
+                var reservationForm = new ReservationForm();
+                reservationForm.Show();
             }
             else
             {
@@ -52,6 +40,5 @@ public partial class LoginForm : Form
             }
         }
     }
-
 
 }
