@@ -10,6 +10,7 @@ public partial class AdminForm : Form
         InitializeComponent();
         LoadUsers();
         LoadTrips();
+        LoadBranches();
     }
 
     private void AdminForm_Load(object sender, EventArgs e)
@@ -18,12 +19,6 @@ public partial class AdminForm : Form
         {
             // Kalkış ve varış noktalarını doldur
             LoadBranches();
-
-            // Otobüs bilgilerini doldur
-            LoadBuses();
-
-            // Surucu bilgilerini doldur
-            LoadDrivers();
         }
         catch (Exception ex)
         {
@@ -35,7 +30,6 @@ public partial class AdminForm : Form
     {
         // Gerekli alanların doldurulup doldurulmadığını kontrol et
         if (cmbDepartureBranch.SelectedValue == null || cmbArrivalBranch.SelectedValue == null ||
-            cmbBusID.SelectedValue == null || cmbDriverID.SelectedValue == null ||
             string.IsNullOrWhiteSpace(txtPrice.Text))
         {
             MessageBox.Show("Lütfen tüm alanları doldurun.");
@@ -59,9 +53,7 @@ public partial class AdminForm : Form
                     DepartureBranchID = (int)cmbDepartureBranch.SelectedValue,
                     ArrivalBranchID = (int)cmbArrivalBranch.SelectedValue,
                     DateTime = dtpTripDate.Value,
-                    Price = price,
-                    BusID = (int)cmbBusID.SelectedValue,
-                    DriverID = (int)cmbDriverID.SelectedValue
+                    Price = price
                 };
 
                 dbContext.Trips.Add(trip);
@@ -102,13 +94,16 @@ public partial class AdminForm : Form
                     return;
                 }
 
+                string departureBranchName = cmbDepartureBranch.SelectedItem.ToString();
+                string arrivalBranchName = cmbArrivalBranch.SelectedItem.ToString();
+                var departureBranch = dbContext.Branches.FirstOrDefault(b => b.BranchName ==  departureBranchName);
+                var arrivalBranch = dbContext.Branches.FirstOrDefault(b => b.BranchName == arrivalBranchName);
+
                 // Sefer bilgilerini güncelle
-                trip.DepartureBranchID = (int)cmbDepartureBranch.SelectedValue;
-                trip.ArrivalBranchID = (int)cmbArrivalBranch.SelectedValue;
-                trip.DateTime = dtpTripDate.Value;
+                trip.DepartureBranchID = departureBranch.BranchID;
+                trip.ArrivalBranchID = arrivalBranch.BranchID;
+                trip.DateTime = dtpTripDate.Value.ToUniversalTime();
                 trip.Price = double.Parse(txtPrice.Text);
-                trip.BusID = (int)cmbBusID.SelectedValue;
-                trip.DriverID = (int)cmbDriverID.SelectedValue;
 
                 dbContext.SaveChanges();
 
@@ -183,7 +178,7 @@ public partial class AdminForm : Form
                              ArrivalBranch = arrivalBranch.BranchName,
                              DateTime = trip.DateTime,
                              Price = trip.Price,
-                             Bus = bus.PlateNumber
+                             Bus = bus.Model,
                          }).ToList();
 
             // DataGridView'e veri atama
@@ -412,8 +407,6 @@ public partial class AdminForm : Form
                     cmbDepartureBranch.SelectedValue = trip.DepartureBranchID;
                     cmbArrivalBranch.SelectedValue = trip.ArrivalBranchID;
                     dtpTripDate.Value = trip.DateTime;
-                    cmbBusID.SelectedValue = trip.BusID;
-                    cmbDriverID.SelectedValue = trip.DriverID;
                     txtPrice.Text = trip.Price.ToString("F2");
                 }
             }
@@ -443,36 +436,6 @@ public partial class AdminForm : Form
             cmbArrivalBranch.DataSource = branches.ToList(); // Yeni bir liste kullanarak bağımsız veri kaynağı
             cmbArrivalBranch.DisplayMember = "BranchName";
             cmbArrivalBranch.ValueMember = "BranchID";
-        }
-    }
-
-    private void LoadBuses()
-    {
-        using (var dbContext = new BusDbContext())
-        {
-            var buses = dbContext.Buses
-                                 .Select(b => new { b.BusID, b.PlateNumber })
-                                 .OrderBy(b => b.PlateNumber)
-                                 .ToList();
-
-            cmbBusID.DataSource = buses;
-            cmbBusID.DisplayMember = "PlateNumber";
-            cmbBusID.ValueMember = "BusID";
-        }
-    }
-
-    private void LoadDrivers()
-    {
-        using (var dbContext = new BusDbContext())
-        {
-            var drivers = dbContext.Drivers
-                                   .Select(d => new { d.DriverID, d.FullName })
-                                   .OrderBy(d => d.FullName)
-                                   .ToList();
-
-            cmbDriverID.DataSource = drivers;
-            cmbDriverID.DisplayMember = "FullName";
-            cmbDriverID.ValueMember = "DriverID";
         }
     }
 }
