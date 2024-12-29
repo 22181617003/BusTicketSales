@@ -30,14 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             dgvTrips = new DataGridView();
-            tripIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dateTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            priceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            busDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            driverDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            departureBranchDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            arrivalBranchDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            reservationsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tripBindingSource = new BindingSource(components);
             lblDeparture = new Label();
             lblArrival = new Label();
@@ -51,6 +43,11 @@
             lblPayment = new Label();
             cmbPaymentMethod = new ComboBox();
             btnCompleteReservation = new Button();
+            tripIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dateTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            priceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            busDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            driverDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvTrips).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tripBindingSource).BeginInit();
             SuspendLayout();
@@ -59,77 +56,13 @@
             // 
             dgvTrips.AutoGenerateColumns = false;
             dgvTrips.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTrips.Columns.AddRange(new DataGridViewColumn[] { tripIDDataGridViewTextBoxColumn, dateTimeDataGridViewTextBoxColumn, priceDataGridViewTextBoxColumn, busDataGridViewTextBoxColumn, driverDataGridViewTextBoxColumn, departureBranchDataGridViewTextBoxColumn, arrivalBranchDataGridViewTextBoxColumn, reservationsDataGridViewTextBoxColumn });
+            dgvTrips.Columns.AddRange(new DataGridViewColumn[] { tripIDDataGridViewTextBoxColumn, dateTimeDataGridViewTextBoxColumn, priceDataGridViewTextBoxColumn, busDataGridViewTextBoxColumn, driverDataGridViewTextBoxColumn });
             dgvTrips.DataSource = tripBindingSource;
             dgvTrips.Location = new Point(12, 66);
             dgvTrips.Name = "dgvTrips";
             dgvTrips.RowHeadersWidth = 51;
-            dgvTrips.Size = new Size(1054, 275);
+            dgvTrips.Size = new Size(681, 275);
             dgvTrips.TabIndex = 0;
-            // 
-            // tripIDDataGridViewTextBoxColumn
-            // 
-            tripIDDataGridViewTextBoxColumn.DataPropertyName = "TripID";
-            tripIDDataGridViewTextBoxColumn.HeaderText = "TripID";
-            tripIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            tripIDDataGridViewTextBoxColumn.Name = "tripIDDataGridViewTextBoxColumn";
-            tripIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dateTimeDataGridViewTextBoxColumn
-            // 
-            dateTimeDataGridViewTextBoxColumn.DataPropertyName = "DateTime";
-            dateTimeDataGridViewTextBoxColumn.HeaderText = "DateTime";
-            dateTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            dateTimeDataGridViewTextBoxColumn.Name = "dateTimeDataGridViewTextBoxColumn";
-            dateTimeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            priceDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // busDataGridViewTextBoxColumn
-            // 
-            busDataGridViewTextBoxColumn.DataPropertyName = "Bus";
-            busDataGridViewTextBoxColumn.HeaderText = "Bus";
-            busDataGridViewTextBoxColumn.MinimumWidth = 6;
-            busDataGridViewTextBoxColumn.Name = "busDataGridViewTextBoxColumn";
-            busDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // driverDataGridViewTextBoxColumn
-            // 
-            driverDataGridViewTextBoxColumn.DataPropertyName = "Driver";
-            driverDataGridViewTextBoxColumn.HeaderText = "Driver";
-            driverDataGridViewTextBoxColumn.MinimumWidth = 6;
-            driverDataGridViewTextBoxColumn.Name = "driverDataGridViewTextBoxColumn";
-            driverDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // departureBranchDataGridViewTextBoxColumn
-            // 
-            departureBranchDataGridViewTextBoxColumn.DataPropertyName = "DepartureBranch";
-            departureBranchDataGridViewTextBoxColumn.HeaderText = "DepartureBranch";
-            departureBranchDataGridViewTextBoxColumn.MinimumWidth = 6;
-            departureBranchDataGridViewTextBoxColumn.Name = "departureBranchDataGridViewTextBoxColumn";
-            departureBranchDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // arrivalBranchDataGridViewTextBoxColumn
-            // 
-            arrivalBranchDataGridViewTextBoxColumn.DataPropertyName = "ArrivalBranch";
-            arrivalBranchDataGridViewTextBoxColumn.HeaderText = "ArrivalBranch";
-            arrivalBranchDataGridViewTextBoxColumn.MinimumWidth = 6;
-            arrivalBranchDataGridViewTextBoxColumn.Name = "arrivalBranchDataGridViewTextBoxColumn";
-            arrivalBranchDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // reservationsDataGridViewTextBoxColumn
-            // 
-            reservationsDataGridViewTextBoxColumn.DataPropertyName = "Reservations";
-            reservationsDataGridViewTextBoxColumn.HeaderText = "Reservations";
-            reservationsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            reservationsDataGridViewTextBoxColumn.Name = "reservationsDataGridViewTextBoxColumn";
-            reservationsDataGridViewTextBoxColumn.Width = 125;
             // 
             // tripBindingSource
             // 
@@ -198,7 +131,7 @@
             // lblAvailableSeats
             // 
             lblAvailableSeats.AutoSize = true;
-            lblAvailableSeats.Location = new Point(1093, 66);
+            lblAvailableSeats.Location = new Point(771, 66);
             lblAvailableSeats.Name = "lblAvailableSeats";
             lblAvailableSeats.Size = new Size(120, 20);
             lblAvailableSeats.TabIndex = 8;
@@ -207,7 +140,7 @@
             // cmbAvailableSeats
             // 
             cmbAvailableSeats.FormattingEnabled = true;
-            cmbAvailableSeats.Location = new Point(1093, 89);
+            cmbAvailableSeats.Location = new Point(771, 89);
             cmbAvailableSeats.Name = "cmbAvailableSeats";
             cmbAvailableSeats.Size = new Size(151, 28);
             cmbAvailableSeats.TabIndex = 9;
@@ -215,7 +148,7 @@
             // lblPayment
             // 
             lblPayment.AutoSize = true;
-            lblPayment.Location = new Point(1093, 212);
+            lblPayment.Location = new Point(771, 212);
             lblPayment.Name = "lblPayment";
             lblPayment.Size = new Size(116, 20);
             lblPayment.TabIndex = 10;
@@ -224,14 +157,14 @@
             // cmbPaymentMethod
             // 
             cmbPaymentMethod.FormattingEnabled = true;
-            cmbPaymentMethod.Location = new Point(1093, 235);
+            cmbPaymentMethod.Location = new Point(771, 235);
             cmbPaymentMethod.Name = "cmbPaymentMethod";
             cmbPaymentMethod.Size = new Size(151, 28);
             cmbPaymentMethod.TabIndex = 11;
             // 
             // btnCompleteReservation
             // 
-            btnCompleteReservation.Location = new Point(1093, 308);
+            btnCompleteReservation.Location = new Point(771, 308);
             btnCompleteReservation.Name = "btnCompleteReservation";
             btnCompleteReservation.Size = new Size(151, 29);
             btnCompleteReservation.TabIndex = 12;
@@ -239,11 +172,51 @@
             btnCompleteReservation.UseVisualStyleBackColor = true;
             btnCompleteReservation.Click += btnCompleteReservation_Click;
             // 
+            // tripIDDataGridViewTextBoxColumn
+            // 
+            tripIDDataGridViewTextBoxColumn.DataPropertyName = "TripID";
+            tripIDDataGridViewTextBoxColumn.HeaderText = "TripID";
+            tripIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            tripIDDataGridViewTextBoxColumn.Name = "tripIDDataGridViewTextBoxColumn";
+            tripIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dateTimeDataGridViewTextBoxColumn
+            // 
+            dateTimeDataGridViewTextBoxColumn.DataPropertyName = "DateTime";
+            dateTimeDataGridViewTextBoxColumn.HeaderText = "DateTime";
+            dateTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            dateTimeDataGridViewTextBoxColumn.Name = "dateTimeDataGridViewTextBoxColumn";
+            dateTimeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            priceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            priceDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // busDataGridViewTextBoxColumn
+            // 
+            busDataGridViewTextBoxColumn.DataPropertyName = "Bus";
+            busDataGridViewTextBoxColumn.HeaderText = "Bus";
+            busDataGridViewTextBoxColumn.MinimumWidth = 6;
+            busDataGridViewTextBoxColumn.Name = "busDataGridViewTextBoxColumn";
+            busDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // driverDataGridViewTextBoxColumn
+            // 
+            driverDataGridViewTextBoxColumn.DataPropertyName = "Driver";
+            driverDataGridViewTextBoxColumn.HeaderText = "Driver";
+            driverDataGridViewTextBoxColumn.MinimumWidth = 6;
+            driverDataGridViewTextBoxColumn.Name = "driverDataGridViewTextBoxColumn";
+            driverDataGridViewTextBoxColumn.Width = 125;
+            // 
             // ReservationForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1250, 368);
+            ClientSize = new Size(1025, 368);
             Controls.Add(btnCompleteReservation);
             Controls.Add(cmbPaymentMethod);
             Controls.Add(lblPayment);
@@ -269,14 +242,6 @@
         #endregion
 
         private DataGridView dgvTrips;
-        private DataGridViewTextBoxColumn tripIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn dateTimeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn busDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn driverDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn departureBranchDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn arrivalBranchDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn reservationsDataGridViewTextBoxColumn;
         private BindingSource tripBindingSource;
         private Label lblDeparture;
         private Label lblArrival;
@@ -290,5 +255,10 @@
         private Label lblPayment;
         private ComboBox cmbPaymentMethod;
         private Button btnCompleteReservation;
+        private DataGridViewTextBoxColumn tripIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dateTimeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn busDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn driverDataGridViewTextBoxColumn;
     }
 }

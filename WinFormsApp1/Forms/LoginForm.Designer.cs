@@ -57,6 +57,7 @@
             // 
             txtPassword.Location = new Point(34, 123);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(265, 27);
             txtPassword.TabIndex = 2;
             // 
@@ -86,7 +87,7 @@
             btnRegister.TabIndex = 5;
             btnRegister.Text = "Kayıt Ol";
             btnRegister.UseVisualStyleBackColor = true;
-            btnRegister.Click += this.btnRegister_Click;
+            btnRegister.Click += btnRegister_Click;
             // 
             // LoginForm
             // 
