@@ -28,11 +28,18 @@ public partial class LoginForm : Form
 
             if (user != null)
             {
-                LoggedUser.loggedInUser = user;  // Static bir yapıda saklıyoruz
-                MessageBox.Show("Giriş başarılı!");
-                this.Hide();
-                var reservationForm = new ReservationForm();
-                reservationForm.Show();
+                if (user.IsAdmin)
+                {
+                    // Admin sayfasını aç
+                    var adminForm = new AdminForm();
+                    adminForm.Show();
+                }
+                else
+                {
+                    // Kullanıcı sayfasını aç
+                    var userForm = new ReservationForm();
+                    userForm.Show();
+                }
             }
             else
             {
