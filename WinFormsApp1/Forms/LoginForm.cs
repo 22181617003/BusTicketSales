@@ -33,12 +33,14 @@ public partial class LoginForm : Form
                     // Admin sayfasını aç
                     var adminForm = new AdminForm();
                     adminForm.Show();
+                    this.Hide(); // Giriş formunu gizle
                 }
                 else
                 {
                     // Kullanıcı sayfasını aç
                     var userForm = new ReservationForm();
                     userForm.Show();
+                    this.Hide(); // Giriş formunu gizle
                 }
             }
             else

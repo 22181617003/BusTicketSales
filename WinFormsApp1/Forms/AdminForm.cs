@@ -52,11 +52,13 @@ public partial class AdminForm : Form
             using (var dbContext = new BusDbContext())
             {
                 // Kalkış ve varış şubelerini al
-                string departureBranchName = cmbDepartureBranch.SelectedItem.ToString();
-                string arrivalBranchName = cmbArrivalBranch.SelectedItem.ToString();
+                // DepartureBranchID ve ArrivalBranchID'yi almak için SelectedValue kullanılıyor
+                int departureBranchId = (int)cmbDepartureBranch.SelectedValue;
+                int arrivalBranchId = (int)cmbArrivalBranch.SelectedValue;
 
-                var departureBranch = dbContext.Branches.FirstOrDefault(b => b.BranchName == departureBranchName);
-                var arrivalBranch = dbContext.Branches.FirstOrDefault(b => b.BranchName == arrivalBranchName);
+                // Branch veritabanından alınan ID'lere göre Branch bilgileri alınıyor
+                var departureBranch = dbContext.Branches.FirstOrDefault(b => b.BranchID == departureBranchId);
+                var arrivalBranch = dbContext.Branches.FirstOrDefault(b => b.BranchID == arrivalBranchId);
 
                 if (departureBranch == null || arrivalBranch == null)
                 {
@@ -65,11 +67,22 @@ public partial class AdminForm : Form
                 }
 
                 // Otobüs ve şoförü al
-                string busName = cmbBus.SelectedItem.ToString();
-                string driverName = cmbDriver.SelectedItem.ToString();
+                int selectedBusId = (int)cmbBus.SelectedValue;
+                var bus = dbContext.Buses.FirstOrDefault(b => b.BusID == selectedBusId);
+                if (bus == null)
+                {
+                    MessageBox.Show("Seçilen otobüs bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                var bus = dbContext.Buses.FirstOrDefault(b => b.Model == busName);
-                var driver = dbContext.Drivers.FirstOrDefault(d => d.FullName == driverName);
+                // Driver tablosundan şoför ID'sini bul
+                int selectedDriverId = (int)cmbDriver.SelectedValue;
+                var driver = dbContext.Drivers.FirstOrDefault(d => d.DriverID == selectedDriverId);
+                if (driver == null)
+                {
+                    MessageBox.Show("Seçilen şoför bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 if (bus == null)
                 {
